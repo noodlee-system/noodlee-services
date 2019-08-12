@@ -1,2 +1,2 @@
-# noodlee-services
-Repository for common system services setup
+# Noodlee System common services
+Repository for common Noodlee System services setup.

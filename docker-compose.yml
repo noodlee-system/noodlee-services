@@ -1,0 +1,32 @@
+version: "3.5"
+
+services:
+  seq:
+    container_name: noodlee_seq
+    image: datalust/seq
+    environment:
+      ACCEPT_EULA: Y
+    ports:
+      - "5341:5341"
+      - "5000:80"
+    networks:
+      - noodlee-system-network
+
+  rabbitmq:
+    container_name: noodlee_rabbitmq
+    image: "rabbitmq:3-management"
+    hostname: "rabbit"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./_rabbitmq/rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+    networks:
+      - noodlee-system-network
+
+networks:
+  noodlee-system-network:
+    name: noodlee-system-network
+    driver: bridge
