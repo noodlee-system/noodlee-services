@@ -25,6 +25,17 @@ services:
     networks:
       - noodlee-system-network
 
+  eureka:
+    container_name: eureka
+    build:
+      context: ./_eureka
+      dockerfile: Dockerfile
+    image: eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - noodlee-system-network
+
 networks:
   noodlee-system-network:
     name: noodlee-system-network
